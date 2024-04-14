@@ -364,21 +364,24 @@ video {
   }
 
   .section-below-video h2 {
-    font-size: 3.2rem;
+    font-size: 3.6rem;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
-
   .section-below-video p,
   .shop-now-button {
     font-size: 1rem;
   }
-
   .shop-now-button {
     top: 20px;
   }
-
   .txt-sp {
     top: 10px;
+  }
+}
+@media only screen and (max-width: 355px) {
+  .section-below-video h2{
+    font-size: 3.4rem;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
 }
 .slider-container {
