@@ -15,6 +15,29 @@ li {
   list-style: none;
   cursor: pointer;
 }
+.cursor {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mix-blend-mode: difference;
+}
+.cursor-text {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0;
+  white-space: nowrap;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
 header {
   width: 100%;
   background-color: #f5f5f5;
@@ -379,7 +402,7 @@ video {
   }
 }
 @media only screen and (max-width: 355px) {
-  .section-below-video h2{
+  .section-below-video h2 {
     font-size: 3.4rem;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
@@ -401,7 +424,6 @@ video {
   padding-left: 20px;
   margin-right: 50px;
 }
-
 .slide {
   flex: 0 0 auto;
   margin-right: 18px;
