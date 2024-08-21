@@ -3,34 +3,43 @@ const cursorText = document.querySelector(".cursor-text");
 const footer = document.querySelector("footer");
 const slides = document.querySelectorAll(".slide");
 
-const updateCursorX = gsap.quickTo(cursor, "x", {
-  duration: 0.1,
-  ease: "none",
-});
-const updateCursorY = gsap.quickTo(cursor, "y", {
-  duration: 0.1,
-  ease: "none",
-});
-
-footer.addEventListener("mouseenter", () => {
-  gsap.to(cursor, {
-    backgroundColor: "white",
+function iLargeScreen() {
+  return window.matchMedia("(min-width: 1024px)").matches;
+}
+if (iLargeScreen()) {
+  const updateCursorX = gsap.quickTo(cursor, "x", {
     duration: 0.1,
     ease: "none",
   });
-});
-footer.addEventListener("mouseleave", () => {
-  gsap.to(cursor, {
-    backgroundColor: "black",
+  const updateCursorY = gsap.quickTo(cursor, "y", {
     duration: 0.1,
     ease: "none",
   });
+  document.addEventListener("mousemove", (e) => {
+    updateCursorX(e.clientX);
+    updateCursorY(e.clientY);
+  });
+  footer.addEventListener("mouseenter", () => {
+    gsap.to(cursor, {
+      backgroundColor: "white",
+      duration: 0.1,
+      ease: "none",
+    });
+  });
+  footer.addEventListener("mouseleave", () => {
+    gsap.to(cursor, {
+      backgroundColor: "black",
+      duration: 0.1,
+      ease: "none",
+    });
+  });
+}
+gsap.from(".navbar a", {
+  y: -100,
+  duration: 0.6,
+  opacity: 0,
+  stagger: 0.3,
 });
-document.addEventListener("mousemove", (e) => {
-  updateCursorX(e.clientX);
-  updateCursorY(e.clientY);
-});
-
 slides.forEach((slide) => {
   const img = slide.querySelector("img");
   img.addEventListener("mouseenter", () => {
@@ -56,6 +65,55 @@ slides.forEach((slide) => {
     gsap.to(cursorText, { opacity: 0, duration: 0.1, ease: "none" });
   });
 });
+window.addEventListener("resize", () => {
+  if (iLargeScreen()) {
+    cursor.style.display = "block";
+  } else {
+    cursor.style.display = "none";
+  }
+});
+function marqueAnimation() {
+  let touchStartY;
+  let animationInstance;
+
+  function createAnimation(direction) {
+    if (animationInstance) {
+      animationInstance.kill();
+    }
+    animationInstance = gsap.to(".marque", {
+      transform: direction > 0 ? "translateX(-200%)" : "translateX(0%)",
+      duration: 3,
+      repeat: -1,
+      ease: "none",
+      paused: true,
+    });
+    gsap.to(".marque img", {
+      rotate: direction > 0 ? 180 : 0,
+      duration: 0.5,
+    });
+    animationInstance.play();
+  }
+  function handleScroll(delta) {
+    createAnimation(delta);
+  }
+  window.addEventListener("wheel", function (event) {
+    handleScroll(event.deltaY);
+  });
+  window.addEventListener("touchstart", function (event) {
+    touchStartY = event.touches[0].clientY;
+  });
+  window.addEventListener("touchmove", function (event) {
+    if (touchStartY) {
+      const touchEndY = event.touches[0].clientY;
+      const delta = touchStartY - touchEndY;
+      handleScroll(delta);
+      touchStartY = null;
+    }
+  });
+  createAnimation(1);
+}
+
+marqueAnimation();
 
 let menu = document.querySelector(".menu-icon");
 let navbar = document.querySelector(".navbar");
