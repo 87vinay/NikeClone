@@ -1,3 +1,27 @@
+window.addEventListener("load", () => {
+  const timeline = gsap.timeline();
+  timeline
+    .fromTo(
+      "#nike-logo",
+      { scale: 0, rotation: 0 },
+      { scale: 1.5, rotation: 360, duration: 1.5, ease: "power4.inOut" }
+    )
+    .to("#nike-logo", { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+  timeline.to(
+    "#loading-bar",
+    { scaleX: 1, duration: 2, ease: "power2.inOut" },
+    "-=1"
+  );
+  timeline.to("#preloader", {
+    opacity: 0,
+    duration: 0.5,
+    ease: "power2.out",
+    onComplete: () => {
+      document.getElementById("preloader").style.display = "none";
+    },
+  });
+});
+
 const cursor = document.querySelector(".cursor");
 const cursorText = document.querySelector(".cursor-text");
 const footer = document.querySelector("footer");
