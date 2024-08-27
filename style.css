@@ -24,7 +24,7 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff; 
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +33,7 @@ li {
 #nike-logo {
   width: 140px;
   height: 140px;
-  background-image: url('/images/Logo_nike_principal.jpg');
+  background-image: url("/images/Logo_nike_principal.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -86,9 +86,6 @@ li {
 }
 header {
   width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 100;
   background-color: #f5f5f5;
   display: flex;
   align-items: center;
@@ -633,7 +630,6 @@ video {
     margin: 8px;
   }
 }
-
 .img-heading {
   margin-top: 5px;
   text-align: center;
@@ -760,6 +756,114 @@ video {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+latest-section {
+  margin-top: 1rem;
+}
+.latest-section .heading h2 {
+  font-weight: 600;
+  margin-bottom: 25px;
+  margin-left: 70px;
+}
+.latest-section .image-container {
+  margin: 0 auto;
+  padding: 0 5px;
+  max-width: 90%;
+}
+.latest-section img {
+  width: 100%;
+  display: block;
+}
+.latest-section .content {
+  text-align: center;
+}
+.latest-section .subheading,
+.latest-section .title,
+.latest-section .description {
+  margin: 10px 0;
+}
+.latest-section .subheading {
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: larger;
+}
+.title {
+  font-weight: 800;
+  font-size: 3.8rem;
+  text-transform: uppercase;
+  color: #111111;
+  letter-spacing: -3px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.title span {
+  display: block;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.description {
+  font-weight: 600;
+  font-size: larger;
+}
+@media (max-width: 1024px) {
+  .title {
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  .subheading {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  .description {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 768px) {
+  #latest-img {
+    content: url("/images/nike-football-samall.jpg");
+    padding: 8px;
+  }
+  .latest-section .subheading,
+  .latest-section .title,
+  .latest-section .description {
+    margin: 5px 0;
+  }
+  .title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  .subheading {
+    font-size: 1.5rem;
+  }
+  .description {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 500px) {
+  .title {
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  .latest-section .subheading,
+  .latest-section .title,
+  .latest-section .description {
+    margin: 2px 0; 
+  }
+  .subheading {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  .description {
+    font-size: 1.2rem;
+  }
+  .latest-section .heading h2 {
+    margin-left: 20px;
+    margin-bottom: 8px;
+  }
+  .latest-section .image-container {
+    max-width: 100%;
+  }
 }
 .section-container {
   margin: 65px;
@@ -943,6 +1047,6 @@ footer {
     margin-top: 10px;
   }
   .social-media i {
-    margin-bottom: 5px; /* Add margin between social media icons */
+    margin-bottom: 5px;
   }
 }
